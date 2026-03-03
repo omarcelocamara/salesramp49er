@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Ramp OS — 49 Educação</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Cabinet+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --bg:#f9f8f6; --white:#ffffff; --ink:#1a1a1a;
+  --ink-2:#3d3d3d; --ink-3:#6b6b6b; --ink-4:#a0a0a0;
+  --orange:#FF4F11; --orange-dark:#d93d08; --orange-pale:#fff4f0; --orange-border:#ffc9b5;
+  --green:#166534; --green-mid:#16a34a; --green-light:#22c55e;
+  --green-pale:#f0fdf4; --green-border:#bbf7d0;
+  --border:#e5e5e3; --border-2:#d4d4d2;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04);
+  --shadow-lg:0 20px 60px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.04);
+  --shadow-xl:0 40px 100px rgba(0,0,0,.1),0 16px 40px rgba(0,0,0,.06);
+  --radius:12px; --radius-lg:20px;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--ink); font-family:'Cabinet Grotesk',sans-serif; font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+/* ── NAV ── */
+nav { position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(249,248,246,.9); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:0 40px; height:60px; display:flex; align-items:center; justify-content:space-between; }
+.nav-left { display:flex; align-items:center; gap:16px; }
+.nav-brand { display:flex; align-items:center; gap:9px; text-decoration:none; }
+.nav-logo-49 { height:26px; display:flex; align-items:center; justify-content:center; background:var(--orange); border-radius:6px; padding:0 8px; font-weight:800; font-size:13px; color:white; letter-spacing:-.02em; }
+.nav-divider { width:1px; height:18px; background:var(--border-2); }
+.nav-product { font-size:14px; font-weight:700; color:var(--ink); }
+.nav-links { display:flex; align-items:center; gap:6px; }
+.nav-link { font-size:13px; color:var(--ink-3); font-weight:500; padding:6px 12px; border-radius:7px; text-decoration:none; transition:all .15s; }
+.nav-link:hover { background:var(--border); color:var(--ink); }
+.nav-cta { background:var(--orange); color:white; font-size:13px; font-weight:700; padding:8px 18px; border-radius:8px; text-decoration:none; transition:all .15s; border:none; cursor:pointer; font-family:'Cabinet Grotesk',sans-serif; }
+.nav-cta:hover { background:var(--orange-dark); }
+
+/* ── HERO ── */
+.hero { padding:140px 40px 100px; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.hero-eyebrow { display:flex; align-items:center; gap:10px; margin-bottom:24px; animation:fadeUp .5s ease both; }
+.eyebrow-49 { display:inline-flex; align-items:center; gap:6px; background:var(--orange-pale); border:1px solid var(--orange-border); color:var(--orange); font-size:12px; font-weight:700; padding:4px 10px; border-radius:6px; }
+.eyebrow-sep { color:var(--ink-4); font-size:12px; }
+.eyebrow-free { display:inline-flex; align-items:center; gap:6px; background:var(--green-pale); border:1px solid var(--green-border); color:var(--green); font-size:12px; font-weight:700; padding:4px 10px; border-radius:6px; }
+.badge-dot { width:5px; height:5px; border-radius:50%; background:var(--green-light); animation:pulse 2s infinite; }
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1 { font-family:'Instrument Serif',serif; font-size:clamp(38px,4.2vw,56px); font-weight:400; line-height:1.1; letter-spacing:-.02em; margin-bottom:22px; animation:fadeUp .5s .06s ease both; }
+h1 em { font-style:italic; color:var(--orange); }
+.hero-desc { font-size:17px; color:var(--ink-3); line-height:1.75; margin-bottom:32px; animation:fadeUp .5s .12s ease both; }
+.hero-free-callout { display:inline-flex; align-items:center; gap:8px; background:var(--green-pale); border:1px solid var(--green-border); border-radius:10px; padding:10px 16px; margin-bottom:28px; animation:fadeUp .5s .14s ease both; }
+.hfc-icon { font-size:18px; }
+.hfc-text { font-size:13px; color:var(--ink-2); }
+.hfc-text strong { color:var(--green); }
+.hero-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; animation:fadeUp .5s .18s ease both; }
+.btn-primary { background:var(--orange); color:white; font-family:'Cabinet Grotesk',sans-serif; font-size:14px; font-weight:700; padding:13px 26px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; transition:all .15s; display:inline-flex; align-items:center; gap:8px; box-shadow:0 2px 8px rgba(255,79,17,.35),inset 0 1px 0 rgba(255,255,255,.15); }
+.btn-primary:hover { background:var(--orange-dark); transform:translateY(-1px); box-shadow:0 6px 16px rgba(255,79,17,.35); }
+.btn-secondary { background:var(--white); color:var(--ink-2); font-size:14px; font-weight:600; padding:13px 20px; border-radius:10px; text-decoration:none; border:1px solid var(--border-2); transition:all .15s; display:inline-flex; align-items:center; gap:8px; box-shadow:var(--shadow-sm); }
+.btn-secondary:hover { border-color:var(--ink-4); }
+.hero-proof { margin-top:28px; display:flex; align-items:center; gap:12px; animation:fadeUp .5s .22s ease both; }
+.avatars { display:flex; }
+.av { width:28px; height:28px; border-radius:50%; border:2px solid var(--bg); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:white; margin-left:-8px; }
+.av:first-child { margin-left:0; }
+.proof-text { font-size:13px; color:var(--ink-3); }
+.proof-text strong { color:var(--ink); }
+
+/* APP MOCK */
+.hero-visual { animation:fadeUp .5s .22s ease both; position:relative; }
+.app-window { background:white; border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-xl); overflow:hidden; }
+.app-bar { padding:13px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; background:#fafaf9; }
+.dots { display:flex; gap:6px; }
+.dot { width:10px; height:10px; border-radius:50%; }
+.atb { font-size:12px; color:var(--ink-4); font-family:'Geist Mono',monospace; margin-left:4px; }
+.app-body { padding:20px; }
+.pg-t { font-size:19px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.pg-s { font-size:12px; color:var(--ink-4); margin-bottom:16px; }
+.slabel { font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-4); margin-bottom:8px; }
+.prow { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid var(--border); }
+.prow:last-child { border-bottom:none; }
+.pav { width:26px; height:26px; border-radius:50%; font-size:10px; font-weight:700; color:white; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.pinfo { flex:1; min-width:0; }
+.pname { font-size:12px; font-weight:600; color:var(--ink); }
+.pmod { font-size:11px; color:var(--ink-4); }
+.pbw { width:80px; }
+.pbb { height:4px; background:var(--border); border-radius:2px; overflow:hidden; }
+.pbf { height:100%; border-radius:2px; background:var(--green-light); }
+.ppct { font-size:11px; color:var(--ink-3); font-weight:600; margin-top:2px; text-align:right; font-family:'Geist Mono',monospace; }
+.vbadge { display:inline-flex; font-size:10px; font-weight:600; padding:2px 6px; border-radius:4px; }
+.vb-v{background:#dbeafe;color:#1d4ed8}.vb-k{background:#fff7ed;color:#c2410c}.vb-r{background:#f0fdf4;color:#166534}
+.mini-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:12px; }
+.mini-card { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:9px; }
+.mci { font-size:13px; margin-bottom:3px; }
+.mct { font-size:11px; font-weight:600; color:var(--ink); }
+.mcs { font-size:10px; color:var(--ink-4); }
+.float-a { position:absolute; bottom:-14px; left:-18px; background:white; border:1px solid var(--border); border-radius:12px; padding:9px 13px; box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:9px; animation:float 4s ease-in-out infinite; }
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fat { font-size:12px; font-weight:700; color:var(--ink); }
+.fas2 { font-size:11px; color:var(--ink-4); }
+.float-b { position:absolute; top:14px; right:-14px; background:var(--orange); color:white; border-radius:12px; padding:10px 14px; box-shadow:0 8px 24px rgba(255,79,17,.3); text-align:center; animation:float 4s 2s ease-in-out infinite; }
+.fbn { font-size:22px; font-weight:800; line-height:1; }
+.fbl { font-size:11px; opacity:.85; }
+
+/* ── TRUST BAR ── */
+.trust-bar { border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:20px 40px; display:flex; align-items:center; justify-content:center; gap:48px; background:var(--white); flex-wrap:wrap; }
+.trust-label { font-size:12px; color:var(--ink-4); font-weight:500; }
+.trust-logos { display:flex; align-items:center; gap:40px; flex-wrap:wrap; justify-content:center; }
+.trust-logo { font-size:13px; font-weight:700; color:var(--ink-4); }
+
+/* ── 49 STRIP ── */
+.strip-49 { background:var(--orange); padding:20px 40px; display:flex; align-items:center; justify-content:center; gap:20px; }
+.strip-logo { font-size:15px; font-weight:800; color:white; letter-spacing:-.02em; background:rgba(255,255,255,.15); border-radius:6px; padding:4px 10px; }
+.strip-text { font-size:14px; color:rgba(255,255,255,.9); font-weight:500; }
+.strip-text strong { color:white; }
+
+/* ── SECTIONS ── */
+.sec { padding:96px 40px; max-width:1100px; margin:0 auto; }
+.sec-tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--orange); letter-spacing:.06em; text-transform:uppercase; margin-bottom:14px; }
+.sec-tag::before { content:''; width:14px; height:1px; background:var(--orange); }
+h2 { font-family:'Instrument Serif',serif; font-size:clamp(28px,3.2vw,42px); font-weight:400; line-height:1.15; letter-spacing:-.02em; color:var(--ink); margin-bottom:14px; }
+h2 em { font-style:italic; color:var(--orange); }
+.sec-lead { font-size:16px; color:var(--ink-3); max-width:480px; line-height:1.75; margin-bottom:52px; }
+.alt-bg { background:var(--white); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+/* ── PROBLEM ── */
+.prob-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.prob-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:26px; transition:all .2s; position:relative; overflow:hidden; }
+.prob-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--orange),transparent); opacity:0; transition:.2s; }
+.prob-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.prob-card:hover::before { opacity:1; }
+.pc-icon { font-size:22px; margin-bottom:11px; display:block; }
+.pc-t { font-size:15px; font-weight:700; color:var(--ink); margin-bottom:7px; }
+.pc-d { font-size:13px; color:var(--ink-3); line-height:1.7; }
+
+/* ── HOW ── */
+.steps-wrap { padding:96px 40px; max-width:1100px; margin:0 auto; }
+.steps-row { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:52px; position:relative; }
+.steps-row::before { content:''; position:absolute; top:26px; left:8%; right:8%; height:1px; background:linear-gradient(90deg,transparent,var(--orange-border),var(--orange-border),transparent); z-index:0; }
+.step-col { padding:0 18px; position:relative; z-index:1; }
+.step-circle { width:52px; height:52px; border-radius:50%; background:var(--white); border:1px solid var(--border-2); display:flex; align-items:center; justify-content:center; font-family:'Geist Mono',monospace; font-size:13px; font-weight:500; color:var(--ink-3); margin-bottom:16px; box-shadow:var(--shadow-sm); transition:all .2s; }
+.step-col:hover .step-circle { background:var(--orange); color:white; border-color:var(--orange); box-shadow:0 4px 12px rgba(255,79,17,.3); }
+.step-t { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.step-d { font-size:13px; color:var(--ink-3); line-height:1.7; }
+
+/* ── VARK ── */
+.vark-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:52px; }
+.vc { border-radius:var(--radius); padding:26px; border:1px solid transparent; transition:all .2s; }
+.vc:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+.vc-v{background:#eff6ff;border-color:#bfdbfe} .vc-a{background:#faf5ff;border-color:#e9d5ff}
+.vc-k{background:#fff7ed;border-color:#fed7aa} .vc-r{background:#f0fdf4;border-color:#bbf7d0}
+.vl { font-family:'Instrument Serif',serif; font-size:46px; font-weight:400; line-height:1; margin-bottom:10px; display:block; }
+.vc-v .vl{color:#2563eb} .vc-a .vl{color:#9333ea} .vc-k .vl{color:#ea580c} .vc-r .vl{color:#16a34a}
+.vn { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:5px; }
+.vd { font-size:13px; color:var(--ink-3); line-height:1.6; margin-bottom:13px; }
+.vf { font-size:11px; font-weight:600; padding:3px 9px; border-radius:5px; display:inline-block; }
+.vc-v .vf{background:#dbeafe;color:#1d4ed8} .vc-a .vf{background:#f3e8ff;color:#7c3aed}
+.vc-k .vf{background:#ffedd5;color:#c2410c} .vc-r .vf{background:#dcfce7;color:#166534}
+
+/* ── FEATURES ── */
+.feat-grid { display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-top:52px; }
+.feat-item { display:flex; align-items:flex-start; gap:15px; padding:18px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg); transition:all .15s; }
+.feat-item:hover { background:var(--white); border-color:var(--border-2); box-shadow:var(--shadow-sm); }
+.feat-icon { width:36px; height:36px; border-radius:9px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:16px; background:var(--orange-pale); border:1px solid var(--orange-border); }
+.feat-t { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.feat-d { font-size:13px; color:var(--ink-3); line-height:1.6; }
+
+/* ── PROMPTS ── */
+.prompt-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:52px; }
+.prompt-card { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:22px; transition:all .2s; }
+.prompt-card:hover { border-color:var(--orange-border); box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.ptag { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:600; color:var(--orange); background:var(--orange-pale); border:1px solid var(--orange-border); padding:3px 8px; border-radius:5px; margin-bottom:11px; }
+.ai-dot { width:5px; height:5px; border-radius:50%; background:var(--orange); animation:pulse 2s infinite; }
+.pt { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:5px; }
+.pd { font-size:13px; color:var(--ink-3); line-height:1.6; margin-bottom:13px; }
+.pcode { background:#0f0f0f; border-radius:8px; padding:13px; font-family:'Geist Mono',monospace; font-size:11px; color:#a3e635; line-height:1.8; }
+.pcode .cm{color:#4b5563} .pcode .kw{color:#7dd3fc}
+
+/* ── SETUP ── */
+.setup-inner { padding:96px 40px; max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.setup-steps { margin-top:32px; }
+.sstep { display:flex; gap:15px; margin-bottom:22px; opacity:0; transform:translateX(-14px); transition:all .5s; }
+.sstep.vis { opacity:1; transform:translateX(0); }
+.sstep-num { width:30px; height:30px; border-radius:50%; flex-shrink:0; background:var(--orange-pale); border:1px solid var(--orange-border); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--orange); font-family:'Geist Mono',monospace; }
+.sstep-t { font-size:14px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+.sstep-d { font-size:13px; color:var(--ink-3); line-height:1.6; }
+.setup-card { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-lg); padding:26px; box-shadow:var(--shadow-lg); }
+.sc-header { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.sc-icon { width:36px; height:36px; border-radius:9px; background:var(--orange); display:flex; align-items:center; justify-content:center; font-size:16px; }
+.sc-t { font-size:14px; font-weight:700; color:var(--ink); }
+.sc-s { font-size:12px; color:var(--ink-4); }
+.sfield { margin-bottom:11px; }
+.sfield-l { font-size:11px; font-weight:600; color:var(--ink-3); margin-bottom:4px; text-transform:uppercase; letter-spacing:.06em; }
+.sfield-v { background:var(--white); border:1px solid var(--green-border); border-radius:8px; padding:8px 12px; font-size:13px; color:var(--ink-2); display:flex; align-items:center; justify-content:space-between; }
+.sfield-ck { color:var(--green-light); }
+.sfield-e { background:var(--white); border:1px solid var(--border-2); border-radius:8px; padding:8px 12px; font-size:13px; color:var(--ink-4); }
+.sai-btn { width:100%; background:var(--orange); color:white; border:none; border-radius:9px; padding:11px; font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Cabinet Grotesk',sans-serif; margin-top:8px; transition:.15s; }
+.sai-btn:hover { background:var(--orange-dark); }
+
+/* ── CTA ── */
+.cta-wrap { margin:0 40px 80px; border-radius:var(--radius-lg); background:var(--orange); padding:80px 60px; text-align:center; position:relative; overflow:hidden; }
+.cta-wrap::before { content:''; position:absolute; top:-60%; left:-20%; width:60%; height:220%; background:radial-gradient(ellipse,rgba(255,255,255,.1),transparent 70%); pointer-events:none; }
+.cta-wrap h2 { font-family:'Instrument Serif',serif; color:white; font-size:clamp(26px,3vw,40px); margin-bottom:12px; position:relative; }
+.cta-lead { color:rgba(255,255,255,.82); font-size:16px; margin-bottom:12px; position:relative; }
+.cta-free { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.25); border-radius:8px; padding:8px 16px; margin-bottom:32px; font-size:13px; color:white; font-weight:600; position:relative; }
+.btn-white { background:white; color:var(--orange); font-size:15px; font-weight:800; padding:14px 32px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; transition:all .15s; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 20px rgba(0,0,0,.15); font-family:'Cabinet Grotesk',sans-serif; position:relative; }
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,.2); }
+.cta-note { margin-top:14px; font-size:12px; color:rgba(255,255,255,.5); position:relative; }
+
+/* ── FOOTER ── */
+footer { border-top:1px solid var(--border); padding:28px 40px; display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink-4); }
+.f-brand { display:flex; align-items:center; gap:10px; }
+.f-49 { background:var(--orange); color:white; font-weight:800; font-size:12px; padding:2px 8px; border-radius:5px; }
+
+/* ── MODAL OVERLAY ── */
+.modal-overlay { position:fixed; inset:0; background:rgba(15,15,15,.6); backdrop-filter:blur(6px); z-index:999; display:none; align-items:center; justify-content:center; padding:20px; }
+.modal-overlay.open { display:flex; animation:fadeIn .2s ease both; }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal { background:white; border-radius:var(--radius-lg); max-width:480px; width:100%; box-shadow:0 40px 100px rgba(0,0,0,.2); overflow:hidden; animation:slideUp .25s ease both; }
+@keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.modal-head { background:var(--orange); padding:28px 32px 24px; position:relative; }
+.modal-head-logo { font-size:11px; font-weight:800; color:rgba(255,255,255,.7); letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px; }
+.modal-head h3 { font-family:'Instrument Serif',serif; font-size:26px; font-weight:400; color:white; line-height:1.2; margin-bottom:6px; }
+.modal-head p { font-size:13px; color:rgba(255,255,255,.8); line-height:1.5; }
+.modal-close { position:absolute; top:16px; right:16px; width:28px; height:28px; border-radius:50%; background:rgba(255,255,255,.2); border:none; cursor:pointer; color:white; font-size:16px; display:flex; align-items:center; justify-content:center; transition:.15s; }
+.modal-close:hover { background:rgba(255,255,255,.3); }
+.modal-body { padding:28px 32px; }
+.form-group { margin-bottom:16px; }
+.form-label { font-size:12px; font-weight:600; color:var(--ink-3); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; display:block; }
+.form-input { width:100%; padding:10px 14px; border:1px solid var(--border-2); border-radius:9px; font-size:14px; color:var(--ink); font-family:'Cabinet Grotesk',sans-serif; transition:.15s; background:var(--bg); }
+.form-input:focus { outline:none; border-color:var(--orange); background:white; box-shadow:0 0 0 3px rgba(255,79,17,.1); }
+.form-check { background:var(--orange-pale); border:1px solid var(--orange-border); border-radius:10px; padding:16px; margin-bottom:20px; }
+.form-check-q { font-size:13px; font-weight:600; color:var(--ink); line-height:1.5; margin-bottom:12px; }
+.form-check-opts { display:flex; gap:10px; }
+.check-opt { flex:1; }
+.check-opt input { display:none; }
+.check-opt label { display:flex; align-items:center; justify-content:center; gap:7px; padding:9px; border-radius:8px; border:1px solid var(--border-2); background:white; font-size:13px; font-weight:600; cursor:pointer; transition:.15s; color:var(--ink-3); }
+.check-opt input:checked + label { border-color:var(--orange); background:var(--orange); color:white; }
+.form-submit { width:100%; background:var(--orange); color:white; border:none; border-radius:10px; padding:13px; font-size:15px; font-weight:700; cursor:pointer; font-family:'Cabinet Grotesk',sans-serif; transition:.15s; display:flex; align-items:center; justify-content:center; gap:8px; box-shadow:0 2px 8px rgba(255,79,17,.3); }
+.form-submit:hover { background:var(--orange-dark); }
+.form-submit:disabled { opacity:.6; cursor:not-allowed; }
+.form-note { font-size:11px; color:var(--ink-4); text-align:center; margin-top:12px; line-height:1.6; }
+
+/* SUCCESS STATE */
+.modal-success { padding:40px 32px; text-align:center; display:none; }
+.success-icon { font-size:48px; margin-bottom:16px; }
+.success-t { font-family:'Instrument Serif',serif; font-size:26px; font-weight:400; color:var(--ink); margin-bottom:8px; }
+.success-d { font-size:14px; color:var(--ink-3); line-height:1.6; margin-bottom:24px; }
+.btn-notion { background:var(--ink); color:white; font-size:14px; font-weight:700; padding:13px 24px; border-radius:10px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:.15s; font-family:'Cabinet Grotesk',sans-serif; }
+.btn-notion:hover { background:#333; }
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:96px;gap:48px;}
+  .hero-visual{display:none;}
+  .prob-grid,.vark-grid,.feat-grid,.prompt-grid,.steps-row{grid-template-columns:1fr;}
+  .steps-row::before{display:none;}
+  .trust-bar,.strip-49{gap:16px;flex-wrap:wrap;justify-content:center;}
+  nav{padding:0 20px;}
+  .sec,.steps-wrap,.setup-inner{padding:60px 20px;}
+  .setup-inner{grid-template-columns:1fr;}
+  .cta-wrap{margin:0 20px 60px;padding:60px 28px;}
+  footer{flex-direction:column;gap:8px;text-align:center;}
+}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<!-- ── MODAL ── -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-head">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-head-logo">49 Educação</div>
+      <h3>Receba o template<br>100% gratuito</h3>
+      <p>Preencha os dados abaixo para liberar o acesso imediato ao Sales Ramp OS.</p>
+    </div>
+    <div class="modal-body" id="modal-form-wrap">
+      <div class="form-group">
+        <label class="form-label">Seu nome</label>
+        <input class="form-input" id="f-name" type="text" placeholder="Ex: Rafael Mendes">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nome da empresa</label>
+        <input class="form-input" id="f-company" type="text" placeholder="Ex: Acme SaaS">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Seu melhor e-mail</label>
+        <input class="form-input" id="f-email" type="email" placeholder="voce@empresa.com.br">
+      </div>
+      <div class="form-check">
+        <div class="form-check-q">Você autoriza a 49 Educação ativar o plano Business AI da Notion por 6 meses gratuitamente para você? Sem custos ou cobrança automática.</div>
+        <div class="form-check-opts">
+          <div class="check-opt">
+            <input type="radio" name="autoriza" id="opt-sim" value="sim">
+            <label for="opt-sim">✓ Sim, autorizo</label>
+          </div>
+          <div class="check-opt">
+            <input type="radio" name="autoriza" id="opt-nao" value="nao">
+            <label for="opt-nao">Não agora</label>
+          </div>
+        </div>
+      </div>
+      <button class="form-submit" id="submit-btn" onclick="submitForm()">
+        Acessar o template grátis →
+      </button>
+      <p class="form-note">🔒 Seus dados são protegidos e não serão compartilhados. O template e a ativação Notion são 100% gratuitos — sem cartão, sem cobrança.</p>
+    </div>
+    <div class="modal-success" id="modal-success">
+      <div class="success-icon">🚀</div>
+      <div class="success-t">Tudo pronto!</div>
+      <p class="success-d">Seu acesso ao Sales Ramp OS está liberado. Clique abaixo para abrir o template no Notion e começar agora.</p>
+      <a class="btn-notion" href="https://fog-fender-af0.notion.site/Sales-Ramp-OS-Template-3184fc7ea0c8810ba896deb088058757?pvs=74" target="_blank">
+        Abrir Sales Ramp OS no Notion →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <a class="nav-brand" href="#">
+      <div class="nav-logo-49">49</div>
+      <div class="nav-divider"></div>
+      <span class="nav-product">Sales Ramp OS</span>
+    </a>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#como-funciona">Como funciona</a>
+    <a class="nav-link" href="#modulos">O que inclui</a>
+    <button class="nav-cta" onclick="openModal()">Pegar grátis →</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div style="padding-top:60px;">
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">
+      <span class="eyebrow-49">49 Educação</span>
+      <span class="eyebrow-sep">×</span>
+      <span class="eyebrow-free"><span class="badge-dot"></span>100% Gratuito</span>
+    </div>
+    <h1>Rampe seu time comercial <em>3× mais rápido</em> com IA</h1>
+    <p class="hero-desc">O único sistema de onboarding que adapta o treinamento ao perfil de aprendizagem de cada vendedor — automaticamente, dentro do Notion.</p>
+    <div class="hero-free-callout">
+      <span class="hfc-icon">🎁</span>
+      <span class="hfc-text">Template Notion + <strong>Notion Business AI por 6 meses</strong> — tudo gratuito, sem cartão.</span>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openModal()">↗ Quero meu template grátis</button>
+      <a href="#como-funciona" class="btn-secondary">Ver como funciona</a>
+    </div>
+    <div class="hero-proof">
+      <div class="avatars">
+        <div class="av" style="background:#FF4F11">RM</div>
+        <div class="av" style="background:#2563eb">CS</div>
+        <div class="av" style="background:#9333ea">AL</div>
+        <div class="av" style="background:#ea580c">PF</div>
+        <div class="av" style="background:#0891b2">MK</div>
+      </div>
+      <p class="proof-text"><strong>Founders de startups</strong> já usando · Setup em 15 minutos</p>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="float-b"><div class="fbn">87%</div><div class="fbl">rampagem mais rápida</div></div>
+    <div class="app-window">
+      <div class="app-bar">
+        <div class="dots"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#febc2e"></div><div class="dot" style="background:#28c840"></div></div>
+        <span class="atb">Sales Ramp OS · Manager Dashboard</span>
+      </div>
+      <div class="app-body">
+        <div class="pg-t">📋 Manager Dashboard</div>
+        <div class="pg-s">Semana de 3 Mar · 4 vendedores em onboarding</div>
+        <div class="slabel">Progresso do Time</div>
+        <div class="prow">
+          <div class="pav" style="background:#FF4F11">RM</div>
+          <div class="pinfo"><div class="pname">Rafael M. <span class="vbadge vb-v">Visual</span></div><div class="pmod">Módulo 05 · Cold Call</div></div>
+          <div class="pbw"><div class="pbb"><div class="pbf" style="width:80%"></div></div><div class="ppct">80%</div></div>
+        </div>
+        <div class="prow">
+          <div class="pav" style="background:#2563eb">CS</div>
+          <div class="pinfo"><div class="pname">Camila S. <span class="vbadge vb-k">Cinest.</span></div><div class="pmod">Módulo 03 · ICP e Personas</div></div>
+          <div class="pbw"><div class="pbb"><div class="pbf" style="width:45%"></div></div><div class="ppct">45%</div></div>
+        </div>
+        <div class="prow">
+          <div class="pav" style="background:#9333ea">AL</div>
+          <div class="pinfo"><div class="pname">André L. <span class="vbadge vb-r">Leitura</span></div><div class="pmod">✅ Certificação 30 Dias</div></div>
+          <div class="pbw"><div class="pbb"><div class="pbf" style="width:100%;background:#22c55e"></div></div><div class="ppct" style="color:#16a34a">100%</div></div>
+        </div>
+        <div class="mini-grid">
+          <div class="mini-card"><div class="mci">👤</div><div class="mct">Colaboradores</div><div class="mcs">4 ativos</div></div>
+          <div class="mini-card"><div class="mci">📚</div><div class="mct">Módulos</div><div class="mcs">9 módulos</div></div>
+          <div class="mini-card"><div class="mci">📖</div><div class="mct">Playbook</div><div class="mcs">Scripts & Frameworks</div></div>
+          <div class="mini-card"><div class="mci">🎭</div><div class="mct">Role Plays</div><div class="mcs">Com feedback IA</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="float-a"><span style="font-size:18px">🤖</span><div><div class="fat">Notion AI adaptou o módulo</div><div class="fas2">Perfil Visual detectado · agora</div></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ── STRIP 49 ── -->
+<div class="strip-49">
+  <span class="strip-logo">49 Educação</span>
+  <span class="strip-text">Uma iniciativa da 49 para acelerar times comerciais de startups. <strong>Template e Notion Business AI gratuitos para você.</strong></span>
+</div>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <span class="trust-label">Funciona com qualquer CRM</span>
+  <div class="trust-logos">
+    <span class="trust-logo">Notion AI</span>
+    <span class="trust-logo">HubSpot</span>
+    <span class="trust-logo">Salesforce</span>
+    <span class="trust-logo">Pipedrive</span>
+    <span class="trust-logo">RD Station</span>
+    <span class="trust-logo">Slack</span>
+  </div>
+</div>
+
+<!-- ── PROBLEM ── -->
+<div class="sec">
+  <div class="sec-tag">O problema</div>
+  <h2>Por que o onboarding<br>comercial <em>não escala</em></h2>
+  <p class="sec-lead">Toda startup repete os mesmos erros ao crescer o time de vendas.</p>
+  <div class="prob-grid">
+    <div class="prob-card"><span class="pc-icon">📁</span><div class="pc-t">Treinamento genérico para todos</div><p class="pc-d">Todo vendedor recebe o mesmo PDF, independente de como aprende. Retenção baixa, rampagem lenta.</p></div>
+    <div class="prob-card"><span class="pc-icon">🔀</span><div class="pc-t">Conteúdo espalhado em 5 ferramentas</div><p class="pc-d">Playbook no Drive, scripts no Slack, métricas no Excel. Ninguém sabe onde está nada quando precisa.</p></div>
+    <div class="prob-card"><span class="pc-icon">👻</span><div class="pc-t">Progresso invisível para o gestor</div><p class="pc-d">O manager só descobre onde o vendedor está travado quando a cota não bate no fim do mês.</p></div>
+    <div class="prob-card"><span class="pc-icon">🔁</span><div class="pc-t">Retrabalho a cada nova contratação</div><p class="pc-d">Toda vez que entra alguém novo, o gestor explica as mesmas coisas do zero. Não escala. Nunca escalou.</p></div>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<div class="alt-bg" id="como-funciona">
+<div class="steps-wrap">
+  <div class="sec-tag">Como funciona</div>
+  <h2>De zero a vendedor <em>pronto para campo</em><br>em 30 dias</h2>
+  <div class="steps-row">
+    <div class="step-col"><div class="step-circle">01</div><div class="step-t">Configure em 15 min</div><p class="step-d">Preencha o START HERE com os dados da sua empresa. A IA usa suas respostas para gerar todo o conteúdo.</p></div>
+    <div class="step-col"><div class="step-circle">02</div><div class="step-t">Vendedor descobre seu perfil</div><p class="step-d">Quiz VARK identifica como cada vendedor aprende melhor: visual, auditivo, cinestésico ou leitura.</p></div>
+    <div class="step-col"><div class="step-circle">03</div><div class="step-t">IA adapta o conteúdo</div><p class="step-d">Cada módulo é reescrito automaticamente no formato ideal para aquele perfil de aprendizagem.</p></div>
+    <div class="step-col"><div class="step-circle">04</div><div class="step-t">Gestor acompanha em tempo real</div><p class="step-d">Dashboard mostra progresso, bloqueios e prontidão de cada vendedor para ir ao mercado.</p></div>
+  </div>
+</div>
+</div>
+
+<!-- ── VARK ── -->
+<div class="sec">
+  <div class="sec-tag">Modelo VARK</div>
+  <h2>4 perfis, <em>1 sistema</em><br>que adapta para todos</h2>
+  <p class="sec-lead">Baseado na metodologia VARK de estilos de aprendizagem. O sistema detecta o perfil e personaliza automaticamente.</p>
+  <div class="vark-grid">
+    <div class="vc vc-v"><span class="vl">V</span><div class="vn">Visual</div><p class="vd">Aprende com diagramas, fluxos, tabelas comparativas e mapas mentais.</p><span class="vf">Diagramas + Canvas</span></div>
+    <div class="vc vc-a"><span class="vl">A</span><div class="vn">Auditivo</div><p class="vd">Aprende com roteiros de conversa, role plays e simulações de diálogo.</p><span class="vf">Scripts + Role Plays</span></div>
+    <div class="vc vc-k"><span class="vl">K</span><div class="vn">Cinestésico</div><p class="vd">Aprende na prática com checklists, tarefas hands-on e exercícios reais.</p><span class="vf">Checklists + Tarefas</span></div>
+    <div class="vc vc-r"><span class="vl">R</span><div class="vn">Leitura</div><p class="vd">Aprende com documentação densa, frameworks e referências bibliográficas.</p><span class="vf">Docs + Frameworks</span></div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<div class="alt-bg" id="modulos">
+<div class="sec">
+  <div class="sec-tag">O que está incluído</div>
+  <h2>7 bancos de dados, 9 módulos<br>e <em>12 automações com IA</em></h2>
+  <p class="sec-lead">Tudo dentro do Notion. Sem código, sem integrações, sem custo.</p>
+  <div class="feat-grid">
+    <div class="feat-item"><div class="feat-icon">👤</div><div><div class="feat-t">Banco de Colaboradores</div><p class="feat-d">Perfil VARK, status de progresso, % de conclusão e prontidão para o mercado de cada vendedor.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">📚</div><div><div class="feat-t">Trilha 30-60-90 Dias</div><p class="feat-d">9 módulos sequenciais com desbloqueio progressivo: produto, ICP, processo, cold call, discovery, negociação.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">📖</div><div><div class="feat-t">Playbook Comercial</div><p class="feat-d">Scripts, frameworks, banco de objeções e cases de sucesso. Tudo pesquisável e linkado aos módulos.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">🎭</div><div><div class="feat-t">Arena de Role Plays</div><p class="feat-d">Cenários de simulação com feedback automático da IA: score, pontos fortes e próximos passos.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">📋</div><div><div class="feat-t">Manager Dashboard</div><p class="feat-d">Visão executiva com alertas automáticos, diagnóstico de travamento e briefing semanal gerado por IA.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">⚙️</div><div><div class="feat-t">Setup Wizard em 15 min</div><p class="feat-d">Formulário guiado que captura dados da empresa. A IA gera todo o conteúdo personalizado automaticamente.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">🏆</div><div><div class="feat-t">Certificações Automáticas</div><p class="feat-d">Ao concluir cada fase, o vendedor recebe certificação com score. O gestor aprova com um clique.</p></div></div>
+    <div class="feat-item"><div class="feat-icon">🤖</div><div><div class="feat-t">12 Prompts de IA Prontos</div><p class="feat-d">Geração de conteúdo, adaptação por perfil, feedback de role play, diagnóstico e briefings — incluídos.</p></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ── PROMPTS ── -->
+<div class="sec">
+  <div class="sec-tag">Notion AI</div>
+  <h2>Prompts prontos que<br><em>geram o treinamento</em> por você</h2>
+  <p class="sec-lead">Cole as informações da sua empresa uma vez. A IA escreve o conteúdo de cada módulo em segundos.</p>
+  <div class="prompt-grid">
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Geração</div><div class="pt">Gera módulo do zero</div><p class="pd">Lê os dados da sua empresa e escreve o conteúdo completo do módulo com seus produtos e ICP reais.</p><div class="pcode"><span class="cm">// Cole as infos da empresa</span>
+<span class="kw">gere</span> o módulo [X] usando:
+→ Produto: [BLOCO 2]
+→ ICP: [BLOCO 3]
+→ Tom: [BLOCO 8]</div></div>
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Adaptação</div><div class="pt">Adapta ao perfil VARK</div><p class="pd">Reescreve qualquer módulo no formato ideal para o estilo de aprendizagem de cada vendedor.</p><div class="pcode"><span class="cm">// Perfil detectado: Visual</span>
+<span class="kw">reescreva</span> para [VARK]:
+→ Visual: diagramas
+→ Auditivo: roteiro
+→ Cinest.: checklist</div></div>
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Feedback</div><div class="pt">Avalia role play</div><p class="pd">Analisa a simulação e dá score, pontos fortes e melhorias específicas para o vendedor.</p><div class="pcode"><span class="cm">// Score automático 0-10</span>
+<span class="kw">avalie</span> este role play:
+→ Abertura + Discovery
+→ Objeções
+→ Fechamento</div></div>
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Diagnóstico</div><div class="pt">Detecta travamento</div><p class="pd">Quando o vendedor para num módulo, a IA diagnostica e sugere ação imediata para o gestor.</p><div class="pcode"><span class="cm">// Alerta automático</span>
+<span class="kw">diagnostique</span> [NOME]:
+→ Parado: [X] dias
+→ Módulo: [Y]
+→ Ação recomendada?</div></div>
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Gestão</div><div class="pt">Weekly Brief do time</div><p class="pd">Toda segunda, consolida o progresso e gera briefing executivo com destaques e riscos.</p><div class="pcode"><span class="cm">// Relatório semanal</span>
+<span class="kw">gere</span> briefing da semana:
+→ Top performers
+→ Atenção urgente
+→ Recomendação #1</div></div>
+    <div class="prompt-card"><div class="ptag"><span class="ai-dot"></span>IA · Conteúdo</div><div class="pt">Plano 30-60-90 dias</div><p class="pd">Cria um plano personalizado para cada novo vendedor com base no perfil e metas da empresa.</p><div class="pcode"><span class="cm">// Plano individual</span>
+<span class="kw">crie</span> plano para [NOME]:
+→ Perfil: [VARK]
+→ Exp.: [X] anos
+→ Meta: [R$ Y/mês]</div></div>
+  </div>
+</div>
+
+<!-- ── SETUP ── -->
+<div class="alt-bg">
+<div class="setup-inner">
+  <div>
+    <div class="sec-tag">Setup Wizard</div>
+    <h2>Preencha uma vez.<br><em>IA cuida do resto.</em></h2>
+    <p style="font-size:16px;color:var(--ink-3);line-height:1.75;">O maior obstáculo de templates é o conteúdo vazio. Resolvemos isso com um formulário guiado que alimenta a IA com os dados reais da sua empresa.</p>
+    <div class="setup-steps">
+      <div class="sstep"><div class="sstep-num">1</div><div><div class="sstep-t">Abra o ⚙️ START HERE</div><p class="sstep-d">A primeira página do template. 8 blocos de perguntas sobre sua empresa, produto, ICP e processo.</p></div></div>
+      <div class="sstep"><div class="sstep-num">2</div><div><div class="sstep-t">Preencha em ~15 minutos</div><p class="sstep-d">Produto, ICP, objeções reais, cases de sucesso, tom de vendas. Quanto mais detalhe, melhor o resultado.</p></div></div>
+      <div class="sstep"><div class="sstep-num">3</div><div><div class="sstep-t">Cole nos prompts de cada módulo</div><p class="sstep-d">Cada módulo tem um prompt que instrui a IA a ler seu START HERE e gerar o conteúdo completo.</p></div></div>
+      <div class="sstep"><div class="sstep-num">4</div><div><div class="sstep-t">Treinamento personalizado em &lt;1h</div><p class="sstep-d">Scripts, módulos, playbook e role plays com o nome do seu produto, suas objeções e seu processo de vendas.</p></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="setup-card">
+      <div class="sc-header"><div class="sc-icon">⚙️</div><div><div class="sc-t">START HERE — Configure seu Sales Ramp OS</div><div class="sc-s">Preencha uma vez · IA usa para gerar tudo</div></div></div>
+      <div class="sfield"><div class="sfield-l">Nome da empresa</div><div class="sfield-v">Acme SaaS <span class="sfield-ck">✓</span></div></div>
+      <div class="sfield"><div class="sfield-l">Produto em 1 frase</div><div class="sfield-v">Reduzimos no-shows de clínicas em 60% <span class="sfield-ck">✓</span></div></div>
+      <div class="sfield"><div class="sfield-l">Principal objeção</div><div class="sfield-v">Já temos WhatsApp pra isso <span class="sfield-ck">✓</span></div></div>
+      <div class="sfield"><div class="sfield-l">Case de sucesso</div><div class="sfield-e">Ex: Clínica X reduziu 58% de faltas em 30 dias...</div></div>
+      <button class="sai-btn">🤖 Gerar módulos com Notion AI →</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-wrap" id="cta">
+  <h2>Seu próximo vendedor pode estar<br>rampando amanhã.</h2>
+  <p class="cta-lead">Setup em 15 minutos. Sem código. Sem integração.</p>
+  <div class="cta-free">🎁 Template + Notion Business AI por 6 meses — 100% gratuito, sem cartão</div>
+  <button class="btn-white" onclick="openModal()">Quero meu template grátis →</button>
+  <p class="cta-note">Uma oferta da 49 Educação · Sem cobranças, sem pegadinha</p>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="f-brand">
+    <span class="f-49">49</span>
+    <span style="font-weight:600;color:var(--ink-3)">49 Educação</span>
+  </div>
+  <span>Sales Ramp OS · Todos os direitos reservados</span>
+</footer>
+
+<script>
+// Modal
+function openModal(){ document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+// Form submit
+function submitForm(){
+  const name = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const autoriza = document.querySelector('input[name="autoriza"]:checked');
+
+  if(!name || !company || !email){
+    alert('Por favor, preencha nome, empresa e e-mail.');
+    return;
+  }
+  if(!email.includes('@')){
+    alert('Digite um e-mail válido.');
+    return;
+  }
+  if(!autoriza){
+    alert('Por favor, responda a pergunta sobre a ativação do Notion.');
+    return;
+  }
+
+  // Desabilitar botão durante envio
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = 'Enviando...';
+
+  // ⚠️ SUBSTITUA pela URL do seu Google Apps Script depois de publicar
+  const WEBHOOK_URL = 'COLE_AQUI_A_URL_DO_APPS_SCRIPT';
+
+  const payload = {
+    nome: name,
+    empresa: company,
+    email: email,
+    autoriza_notion: autoriza.value,
+    timestamp: new Date().toISOString()
+  };
+
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors', // Google Apps Script não manda CORS headers no redirect
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .catch(() => {}) // no-cors sempre entra no catch — ignorar, o dado chegou
+  .finally(() => {
+    document.getElementById('modal-form-wrap').style.display='none';
+    document.getElementById('modal-success').style.display='block';
+  });
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{ if(e.isIntersecting){ e.target.style.transitionDelay=(i*.1)+'s'; e.target.classList.add('vis'); } });
+},{threshold:.15});
+document.querySelectorAll('.sstep').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
